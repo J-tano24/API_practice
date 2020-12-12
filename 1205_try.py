@@ -17,10 +17,22 @@ def main():
     add_info = "{0}-{1}-{2}".format(address["address1"],address["address2"],address["address3"])
 
     addresses.append(add_info)
+    breakpoint()
     
-    with open("address.csv", "w") as f:
-      writer = csv.writer(f)
-      writer.writerows(addresses)
+    # ①.csvへの書き込み
+    # with open("address.csv", "w") as f:
+    #   writer = csv.writer(f)
+    #   writer.writerows(addresses)
+
+    # ②.txtへの書き込み(,区切りが無くなる。)
+    path_w="address.txt"
+    s = addresses
+    with open(path_w, mode="w") as f:
+      f.write(str(s))
+    
+    # 読み込んでターミナルに出力
+    with open(path_w) as f:
+      print(f.read())
 
   return print(addresses)
 
